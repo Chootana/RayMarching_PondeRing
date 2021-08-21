@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: RayMarching_PondeRing
   m_Shader: {fileID: 4800000, guid: 6c85c9cd89cfb934fb36f46bba40468e, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _MODE_PONDERING
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,9 +20,22 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
+    - _ExcraGap: 0.152
+    - _ExcraHeight: 0.253
+    - _ExcraMajorRadius: 0.087
+    - _ExcraMinorRadius: 0.031
     - _Loop: 60
-    - _MinDist: 0.01
-    - _RadiusMajor: 0.236
-    - _RadiusMinor: 0.0519
+    - _MinDist: 0.001
+    - _Mode: 0
+    - _PonMajorRadius: 0.22
+    - _PonMinorRadius: 0.041
+    - _QuestBarLength: 0.05
+    - _QuestGap: 0.162
+    - _RadiusMajor: 0.219
+    - _RadiusMinor: 0.0439
     m_Colors:
     - _Color: {r: 0.8018868, g: 0.34569824, b: 0, a: 1}
+    - _ExcraOffset: {r: 0, g: 0.15, b: 0, a: 1}
+    - _OffsetExcramation: {r: 0, g: 0.26, b: 0, a: 1}
+    - _PonOffset: {r: 0, g: -0.25, b: 0, a: 1}
+    - _QuestOffset: {r: 0, g: 0.15, b: 0, a: 1}
