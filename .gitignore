@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/_PoiyomiShaders*
+Assets/csc*
+Assets/External*
+Thry/
