@@ -9,19 +9,22 @@
         _Loop("Loop", Range(1, 100)) = 30 
         _MinDist ("Minimum Distance", Range(0.001, 0.1)) = 0.01
 
+        _PonScaleFactor("Donuts Scale Factor", Float) = 100
         _PonOffset("Donuts Offset", Vector) = (0.0, 0.0, 0.0)
         _PonMajorRadius("Donuts Major Radius", Range(0, 0.5)) = 0.2
         _PonMinorRadius("Donuts Minor Radius", Range(0, 0.1)) = 0.05
 
         _ExcraOffset("Excramation Offset", Vector) = (0.0, 0.0, 0.0)
-        _ExcraHeight("Excramation Height", Range(0, 1.0)) = 0.3
-        _ExcraGap("Excramatino Gap", Range(0, 1.0)) = 0.2
-        _ExcraMajorRadius("Excramation Major Radius", Range(0, 1)) = 0.1
-        _ExcraMinorRadius("Excramation Minor Radius", Range(0, 1)) = 0.05
+        _ExcraHeight("Excramation Height", Range(0, 0.1)) = 0.03
+        _ExcraGap("Excramatino Gap", Range(0, 0.1)) = 0.02
+        _ExcraMajorRadius("Excramation Major Radius", Range(0, 0.1)) = 0.01
+        _ExcraMinorRadius("Excramation Minor Radius", Range(0, 0.1)) = 0.01
 
         _QuestOffset("Question Offset", Vector) = (0.0, 0.0, 0.0)
         _QuestBarLength("Question Bar Length", Range(0, 0.1)) = 0.05 
-        _QuestGap("Question Gap", Range(0, 1)) = 0.2
+        _QuestGap("Question Gap", Range(0, 0.1)) = 0.02
+        _QuestMajorRadius("Question Major Radius", Range(0, 0.1)) = 0.1
+        _QuestMinorRadius("Questino Minor Radius", Range(0, 0.1)) = 0.02
     }
 
 		SubShader
@@ -63,6 +66,7 @@
             int _Loop;
             float _MinDist;
             
+            float _PonScaleFactor;
             float3 _PonOffset;
             float _PonMajorRadius;
             float _PonMinorRadius;
@@ -76,6 +80,8 @@
             float3 _QuestOffset;
             float _QuestBarLength;
             float _QuestGap;
+            float _QuestMajorRadius;
+            float _QuestMinorRadius;
 
 
             inline float2 Rotate2d(float2 pos, float angle)
@@ -132,9 +138,10 @@
                 int N = 8;
                 float s[8];
                 float r = _PonMinorRadius;
+                r *= 1;
                 float3 o = float3(_PonMajorRadius, 0.0, 0.0);
                 float angle = 2 * PI  / N;
-                float k = 15.0;
+                float k = 50;
 
                 p -= _PonOffset;
 
@@ -148,12 +155,12 @@
                 s[7] = sdSphere(p, float3(Rotate2d(o.xy, angle * 7), o.z), r);
 
 
-                float d= smoothMin(s[0], s[1], k);
+                float d= min(s[0], s[1]);
 
                 [unroll]
                 for (int n=2; n<N; ++n)
                 {
-                    d = smoothMin(d, s[n], k);
+                    d = min(d, s[n]);
                 }
                 return d;
             }
@@ -170,12 +177,12 @@
                 float cappedTorus;
                 float theta = 0.7 * PI;
 
-                float3 pTorus = p - float3(0.0, 0.12, 0.0) - _QuestOffset;
+                float3 pTorus = p - _QuestOffset;
                 pTorus = float3(Rotate2d(pTorus.xy, 0.3 * PI), pTorus.z);
-                cappedTorus = sdCappedTorus(pTorus, float2(sin(theta), cos(theta)), 0.1, 0.03);
+                cappedTorus = sdCappedTorus(pTorus, float2(sin(theta), cos(theta)), _QuestMajorRadius, _QuestMinorRadius);
 
-                float capsule  = sdCapsule(p - _QuestOffset, float3(0.0, -_QuestBarLength, 0.0), float3(0.0, 0.01, 0.0), 0.03);
-                float sphere = sdSphere(p - _QuestOffset, float3(0.0, -_QuestGap, 0.0), 0.03);
+                float capsule  = sdCapsule(p - _QuestOffset, float3(0.0, -_QuestMajorRadius - _QuestBarLength, 0.0), float3(0.0, - _QuestMajorRadius, 0.0), _QuestMinorRadius);
+                float sphere = sdSphere(p - _QuestOffset, float3(0.0, -_QuestGap, 0.0), _QuestMinorRadius);
 
                 return min(min(capsule, cappedTorus), sphere);
             }

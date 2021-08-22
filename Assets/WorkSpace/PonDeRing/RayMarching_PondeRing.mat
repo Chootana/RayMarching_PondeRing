@@ -20,22 +20,25 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _ExcraGap: 0.152
-    - _ExcraHeight: 0.253
-    - _ExcraMajorRadius: 0.087
-    - _ExcraMinorRadius: 0.031
+    - _ExcraGap: 0.06
+    - _ExcraHeight: 0.098
+    - _ExcraMajorRadius: 0.0344
+    - _ExcraMinorRadius: 0.0206
     - _Loop: 60
     - _MinDist: 0.001
-    - _Mode: 0
-    - _PonMajorRadius: 0.22
-    - _PonMinorRadius: 0.041
-    - _QuestBarLength: 0.05
-    - _QuestGap: 0.162
+    - _Mode: 2
+    - _PonMajorRadius: 0.046
+    - _PonMinorRadius: 0.0269
+    - _PonScaleFactor: 10
+    - _QuestBarLength: 0.0277
+    - _QuestGap: 0.0996
+    - _QuestMajorRadius: 0.0389
+    - _QuestMinorRadius: 0.0088
     - _RadiusMajor: 0.219
     - _RadiusMinor: 0.0439
     m_Colors:
     - _Color: {r: 0.8018868, g: 0.34569824, b: 0, a: 1}
     - _ExcraOffset: {r: 0, g: 0.15, b: 0, a: 1}
     - _OffsetExcramation: {r: 0, g: 0.26, b: 0, a: 1}
-    - _PonOffset: {r: 0, g: -0.25, b: 0, a: 1}
-    - _QuestOffset: {r: 0, g: 0.15, b: 0, a: 1}
+    - _PonOffset: {r: 0, g: 0, b: 0, a: 1}
+    - _QuestOffset: {r: 0, g: 0.17, b: 0, a: 1}
