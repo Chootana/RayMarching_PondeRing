@@ -26,7 +26,7 @@ Material:
     - _ExcraMinorRadius: 0.0206
     - _Loop: 60
     - _MinDist: 0.001
-    - _Mode: 2
+    - _Mode: 0
     - _PonMajorRadius: 0.046
     - _PonMinorRadius: 0.0269
     - _PonScaleFactor: 10

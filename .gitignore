@@ -61,4 +61,6 @@ crashlytics-build.properties
 Assets/_PoiyomiShaders*
 Assets/csc*
 Assets/External*
+Assets/Scenes*
 Thry/
+*unitypackage*
